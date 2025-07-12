@@ -274,6 +274,7 @@ export default function HomePage() {
             <h2 className="text-4xl md:text-5xl font-display font-bold text-gradient-hero mb-6">
               Coming Soon...
             </h2>
+
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Exciting new products are in development to expand our healthy
               lifestyle range
