@@ -1,17 +1,17 @@
-import { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Phone, Mail, MapPin } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { Menu, X, Phone, Mail, MapPin } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
 
   const navigation = [
-    { name: 'Home', href: '/' },
-    { name: 'About Us', href: '/about' },
-    { name: 'Our Products', href: '/products' },
-    { name: 'Contact', href: '/contact' },
+    { name: "Home", href: "/" },
+    { name: "About Us", href: "/about" },
+    { name: "Our Products", href: "/products" },
+    { name: "Contact", href: "/contact" },
   ];
 
   const isActive = (path: string) => location.pathname === path;
@@ -37,8 +37,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                   to={item.href}
                   className={`px-3 py-2 text-sm font-medium transition-smooth hover:text-primary ${
                     isActive(item.href)
-                      ? 'text-primary border-b-2 border-primary'
-                      : 'text-gray-700 hover:text-primary'
+                      ? "text-primary border-b-2 border-primary"
+                      : "text-gray-700 hover:text-primary"
                   }`}
                 >
                   {item.name}
@@ -52,7 +52,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               className="md:hidden"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
-              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isMenuOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
             </Button>
           </div>
         </div>
@@ -67,8 +71,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                   to={item.href}
                   className={`block px-3 py-2 text-base font-medium transition-smooth ${
                     isActive(item.href)
-                      ? 'text-primary bg-primary/10'
-                      : 'text-gray-700 hover:text-primary hover:bg-gray-50'
+                      ? "text-primary bg-primary/10"
+                      : "text-gray-700 hover:text-primary hover:bg-gray-50"
                   }`}
                   onClick={() => setIsMenuOpen(false)}
                 >
@@ -81,9 +85,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       </header>
 
       {/* Main Content */}
-      <main className="flex-1">
-        {children}
-      </main>
+      <main className="flex-1">{children}</main>
 
       {/* Footer */}
       <footer className="bg-gray-900 text-white">
@@ -94,17 +96,17 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               <h3 className="text-xl font-display font-bold mb-4 text-gradient-primary">
                 Sri Saamba Parmeshwara Industries
               </h3>
-              <p className="text-gray-300 mb-4">
-                Private Limited
-              </p>
+              <p className="text-gray-300 mb-4">Private Limited</p>
               <p className="text-sm text-gray-400 mb-2">
                 CIN: U11049KA2024PTC192614
               </p>
               <div className="flex items-start space-x-2 text-sm text-gray-400">
                 <MapPin className="h-4 w-4 mt-1 flex-shrink-0" />
                 <span>
-                  #1207/343, 9th main, 7th Sector<br />
-                  HSR Layout, Bangalore<br />
+                  #1207/343, 9th main, 7th Sector
+                  <br />
+                  HSR Layout, Bangalore
+                  <br />
                   Karnataka – 560102
                 </span>
               </div>
@@ -133,11 +135,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               <div className="space-y-3">
                 <div className="flex items-center space-x-2 text-gray-300">
                   <Phone className="h-4 w-4" />
-                  <span>Contact us today!</span>
+                  <span>+91 8054430418</span>
                 </div>
                 <div className="flex items-center space-x-2 text-gray-300">
                   <Mail className="h-4 w-4" />
-                  <span>Connect with us</span>
+                  <span>hello@srisaamba.com</span>
                 </div>
               </div>
             </div>
@@ -146,7 +148,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           {/* Copyright */}
           <div className="border-t border-gray-800 mt-8 pt-8 text-center">
             <p className="text-gray-400">
-              © 2024 Sri Saamba Parmeshwara Industries Private Limited. All rights reserved.
+              © 2025 Sri Saamba Parmeshwara Industries Private Limited. All
+              rights reserved.
             </p>
           </div>
         </div>
