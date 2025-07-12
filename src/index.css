@@ -1,13 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Premium Food & Beverage Company Design System */
 
 @layer base {
   :root {
+    /* Brand Colors - Food & Beverage Industry */
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
 
@@ -17,26 +18,50 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Primary - Fresh Orange/Citrus */
+    --primary: 24 100% 50%;
+    --primary-foreground: 0 0% 98%;
+    --primary-hover: 24 100% 45%;
+    --primary-glow: 24 100% 60%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary - Natural Green */
+    --secondary: 142 76% 36%;
+    --secondary-foreground: 0 0% 98%;
+    --secondary-hover: 142 76% 31%;
 
+    /* Accent - Berry Purple */
+    --accent: 280 100% 70%;
+    --accent-foreground: 0 0% 98%;
+    --accent-hover: 280 100% 65%;
+
+    /* Supporting Colors */
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --ring: 24 100% 50%;
 
-    --radius: 0.5rem;
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(24 100% 50%), hsl(24 100% 60%));
+    --gradient-secondary: linear-gradient(135deg, hsl(142 76% 36%), hsl(142 76% 46%));
+    --gradient-hero: linear-gradient(135deg, hsl(24 100% 50%), hsl(280 100% 70%));
+    --gradient-overlay: linear-gradient(180deg, rgba(0,0,0,0.7), rgba(0,0,0,0.3));
+
+    /* Shadows */
+    --shadow-primary: 0 10px 30px -5px hsl(24 100% 50% / 0.3);
+    --shadow-secondary: 0 10px 30px -5px hsl(142 76% 36% / 0.3);
+    --shadow-glow: 0 0 40px hsl(24 100% 60% / 0.4);
+    --shadow-soft: 0 4px 20px rgba(0,0,0,0.1);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --radius: 1rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -100,6 +125,111 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-inter;
+  }
+
+  .font-display {
+    font-family: 'Playfair Display', serif;
+  }
+
+  .font-inter {
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+@layer components {
+  /* Hero Button Variants */
+  .btn-hero {
+    @apply bg-gradient-to-r from-primary to-primary-glow text-primary-foreground px-8 py-4 rounded-lg font-semibold 
+           hover:shadow-[var(--shadow-primary)] hover:scale-105 transition-[var(--transition-bounce)] 
+           border-0 cursor-pointer;
+  }
+
+  .btn-secondary {
+    @apply bg-gradient-to-r from-secondary to-secondary-hover text-secondary-foreground px-6 py-3 rounded-lg 
+           font-medium hover:shadow-[var(--shadow-secondary)] hover:scale-105 transition-[var(--transition-smooth)];
+  }
+
+  /* Animations */
+  .fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  .slide-up {
+    animation: slideUp 0.8s ease-out forwards;
+  }
+
+  .float-animation {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .glow-pulse {
+    animation: glowPulse 2s ease-in-out infinite alternate;
+  }
+
+  /* Product hover effects */
+  .product-hover {
+    @apply transition-[var(--transition-smooth)] hover:scale-110 hover:shadow-[var(--shadow-soft)] 
+           hover:brightness-110 cursor-pointer;
+  }
+
+  /* Text gradients */
+  .text-gradient-primary {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-hero {
+    background: var(--gradient-hero);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Section backgrounds */
+  .section-overlay {
+    background: var(--gradient-overlay);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes glowPulse {
+  from {
+    filter: drop-shadow(0 0 20px hsl(var(--primary-glow) / 0.7));
+  }
+  to {
+    filter: drop-shadow(0 0 40px hsl(var(--primary-glow) / 0.9));
   }
 }
